@@ -1,0 +1,28 @@
+<mvc:View 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns="sap.m"
+xmlns:core="sap.ui.core" 
+controllerName="sap.ui.demo.wt.controller.AppointmentsCreate">
+<Page class="sapUiContentPadding" enableScrolling="true" showFooter="false" showHeader="false" title="{i18n>newAppoint}">
+    <content>
+		<HBox width="100%" justifyContent="Center" alignItems="Center" alignContent="Center">
+		<Button
+			icon="sap-icon://activities"
+			text="{i18n>reservations}"
+			press="showCalendar"/>
+		</HBox>
+		
+		<VBox id="AppointmentsCreate" width="100%">
+			<Input id="firstname" type="Text" maxLength="100" placeholder="{i18n>firstname}" value="{path: '/firstname', type: 'sap.ui.model.type.String', constraints : {minLength : 3, maxLength : 80}}"/>
+			<Input id="lastname" type="Text" maxLength="100" placeholder="{i18n>lastname}" value="{path: '/lastname', type: 'sap.ui.model.type.String', constraints : {minLength : 3, maxLength : 80}}"/>
+			<Label text="{i18n>reservTime}"/> 
+			<DatePicker id="appointmentDate" displayFormat="yyyy-MM-dd" change="dateInputValidation" valueFormat="yyyy-MM-dd" value="{path: '/appointmentDate', type:'sap.ui.model.type.Date', formatOptions: {source:{pattern: 'yyyy-MM-dd'}, pattern: 'yyyy-MM-dd'}}" />
+			<TimePicker id="appointmentTime" minutesStep="20"  valueFormat="HH:mm:ss" change="timeInputValidation" displayFormat="HH:mm:ss" value="{path: '/appointmentTime', type:'sap.ui.model.type.Time', formatOptions: {source:{pattern: 'HH:mm'}, pattern: 'HH:mm'}}" />
+		</VBox>
+		
+		<HBox width="100%" justifyContent="Center" alignItems="Center" alignContent="Center">
+		<Button id="btnCreate" text="{i18n>create}" press="create" icon="sap-icon://add"/>
+		</HBox>
+    </content>
+</Page>
+</mvc:View>
